@@ -91,7 +91,6 @@
 
         <section id="blog">
             <article>
-                <h2 id="datetime">Blog Post</h2>
                 <h3>What language should you learn</h3>
                 <p>Programming languages vary in how much abstraction they offer to the programmer. This ranges from no abstraction, 
                     reffered low level, to high abstraction which are called high level languages.</p>
@@ -100,9 +99,23 @@
 
         <section id="blog">
             <article>
-                <h2 id="datetime">Blog Post</h2>
-                <h3>What you should know about git</h3>
-                <p>Git is everywhere and for a reason. Here I want to share some 'how-tos' for everyday usage.</p>
+                <h3>Some useful scenarios while using git</h3>
+                <p>Git is everywhere. Here I want to share some 'how-tos' for everyday usage.</p>
+                <p>To edit a previous commit, you can reset with <strong>--soft</strong> flag</p>
+                <ul>
+                    <li><strong>git reset --soft *commit*</strong> </li>
+                </ul>
+                <p>Then you can make changes and then commit and push again, now to push you should use <strong>--force</strong> flag.</p>
+                <ul>
+                    <li><strong>git push origin *branch* --force</strong></li>
+            </article>
+        </section>
+
+        <section id="blog">
+            <article>
+                <h3>What you should know about interrupts</h3>
+                <p>Interrupts are <i>events</i> that can occur at any time and stop the execution of a program. An interrupt must be
+                handled by the OS, and OS maintains a table that has interrupt handlers listed.</p>
             </article>
         </section>
 

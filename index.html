@@ -128,7 +128,6 @@
 <body>
     <header>
         <h1>Systems Engineering!</h1>
-        <p>Here I post about technology, life, universe and pretty much anything that I find interesting</p>
     </header>
 
     <nav>
@@ -141,8 +140,9 @@
         <section id="about">
             <article>
                 <h2>About Me</h2>
-                <p>Hi, I'm an engineer with interests learning the basics and infrastructure. </p>
-                <p>Feel free to explore my blog where I share my thoughts in a layman way!</p>
+                <p>Hi, I'm an engineer by degree and love learning the basics and new things every day.
+                    I post about technology, life, universe and pretty much anything that I find interesting.
+                    Feel free to explore my blog where I share my thoughts in a layman way!</p>
             </article>
         </section>
 
@@ -158,6 +158,26 @@
                 <a class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
             </article>
         </section>
+        <section id="blog">
+            <article>
+                <h3>What inodes are all about!!!</h3>
+                <p>Inode is an element (essentially a data structure of fixed size) used for indexing a file and describes filesystem objects (file and directory)
+                     by storing information about the file except the file name. Information like link count, mode (rwx), owners,
+                    timestamps, block pointers that could be direct or indirect (pointer to a block and that block has pointers to data blocks), size of blocks.  
+                </p>
+                <div class="read-more-content">
+                    <!-- Additional content here -->
+                     A filesystem is a data structure over the persistent storage like hard disks drives that provides indexing for the location of a file, keeping track of storage space,
+                     create/update/read/delete files. Each inode is stored in a common table in the filesystem. 
+                     Dentry (directory entry) is used to store filename and inode number in a directory. While deleting a file, the filename is removed from dentry, but
+                     data from blocks is not removed. The system call <i>unlink(*path)</i> is used to remove the dentry and decrements the link count in the inode. If 
+                     the link count goes to 0, then inode is marked as free.
+
+                </div>
+                <a class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
+            </article>
+        </section>
+
         <section id="blog">
             <article>
                 <h3>Signals and Interrupts</h3>

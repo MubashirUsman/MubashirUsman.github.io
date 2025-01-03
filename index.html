@@ -173,10 +173,27 @@
                      data from blocks is not removed. The system call <i>unlink(*path)</i> is used to remove the dentry and decrements the link count in the inode. If 
                      the link count goes to 0, then inode is marked as free.
 
+                     Hardlinks are dentries that point to the same inode number and therefore incremented/decremented, however softlinks are dentries that point to the name of the file. 
+
                 </div>
                 <a class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
             </article>
         </section>
+
+        <section id="blog">
+            <article>
+                <h3>What is CI/CD?</h3>
+                <p>
+                    CI is integrating code changes in the main code base frequently, this is done by running tests on the 
+                    code before merging it. To achieve this, we should have a separate branch for each feature and then a branch
+                    to merge the features and running tests, after the tests are passed, then the code should be merged to main branch.
+                </p>
+                <div class="read-more-content">
+                    <!-- Additional content here -->
+
+                </div>
+                <a class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
+            </article>
 
         <section id="blog">
             <article>
@@ -283,7 +300,7 @@
                     </p>
                     <p> What is Process Context? When a process is in execution, it has some current operating state that must be stored somewhere to resume
                         the operations again. This operating state is process's memory, 
-                        registers etc. The act of removing a process from execution state is called process switch. In process
+                        register values, instruction pointer etc. The act of removing a process from execution state is called process switch. In process
                         switch, the mapping will also be swictched to point to another process memory.
                     </p>
                     <p> <strong>Context switch</strong> is a smaller version of <strong>process switch</strong>. It happens when 
@@ -303,7 +320,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Mubashir Usman. All rights reserved.</p>
+        <p>&copy; 2025 Mubashir Usman. All rights reserved.</p>
     </footer>
     <script>
         function toggleReadMore(button) {

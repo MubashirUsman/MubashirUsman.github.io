@@ -11,11 +11,14 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-image: url('texture.png'), linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+            background-repeat: repeat-y;
+            background-position: left center, right center;
+            background-size: 50px 100%;
         }
 
         header {
-            background: url('https://cdn.pixabay.com/photo/2017/06/20/19/22/landscape-2420872_960_720.jpg') no-repeat center center/cover;
+            background: url('bgd.jpg') no-repeat center center/cover;
             color: white;
             text-align: center;
             padding: 100px 0;
@@ -55,6 +58,7 @@
             max-width: 1100px;
             margin: auto;
             padding: 1rem;
+            background-color: white;
         }
 
         article {
@@ -87,8 +91,8 @@
 
 <body>
     <header>
-        <h1>Welcome to All Networking Things!</h1>
-        <p>Here I post in my free time...</p>
+        <h1>Systems Engineering!</h1>
+        <p>Here I post in my free time...and whatever I find interesting</p>
     </header>
 
     <nav>
@@ -113,6 +117,7 @@
                     reffered low level, to high abstraction which are called high level languages.</p>
                 <div class="read-more-content">
                     <!-- Additional content here -->
+
                 </div>
                 <a class="read-more-btn" onclick="toggleReadMore(this)">Read More</a>
             </article>
@@ -155,11 +160,36 @@
         </section>
         <section id="blog">
             <article>
-                <h3>What is Process Context</h3>
-                <p>When a process is in execution, it has some current operating state that must be stored somewhere to resume
-                     the operations again. This operating state is process's memory, 
-                     registers etc. The act of removing a process from execution state is called process switch.</p>
+                <h3>How a user code and Kernal co-exists: Exceptional Control Flow</h3>
+                <p>A process is a running instance of a program. Fudamentally it consists of memory and some values stored in registers.
+                     Memory consists of code that user wrote and some kernal code.</p>
                 <div class="read-more-content">
+                    <p>To change the state of the system, like writing to disk, sending network packets, respond to Ctrl+C, writing bytes on screen,
+                        then trasnfer of control
+                        to kernal is needed. Why? Because we don't want user prgram to do such sensitive things.
+                        Kernal is collection of some exception handlers which are called when something happens. Kernal does not run on its own, but it sets the timer on CPU to run
+                        user code for some time and then wake up the kernal if the user program is still not complete.
+                        Exceptions are way to go from user level to supervisor/kernal level. Exceptions table (aka interrupt table) collection of instructions
+                        that run when an exception occurs.
+                        Example: exception table has entry for page fault with exception number 14 in intel x86.
+                        <div><img src="exception_table.png" alt="exception table"></div>
+                        Flow is: CPU timer fires ==> exception happens ==> kernal runs
+                    </p>
+                    <p> Its important to say that OS not only consists of kernal but also many other things and kernal is a subset of full OS.
+                        Also root user is not kernal mode, it just runs user code with more privilages. Its entirely different from kernal mode.
+                        Root user privilages are defined by OS and kernal mode privilages are defined by the CPU. Two things are entirely different.
+                    </p>
+                    <p>Four ways of moving from user mode to kernal mode (aka exceptions) are <i>interrupts</i>, <i>traps</i>, <i>faults</i> and <i>aborts</i>.
+                        They are procedure call but unlike moving from one stack frame to another they move from one execution mode to another execution mode.
+                        Asynchronous exceptions (interrupts) are external to currently running instruction. Indicated by processor's interrupt pin.
+                        
+
+                    </p>
+                    <p> What is Process Context? When a process is in execution, it has some current operating state that must be stored somewhere to resume
+                        the operations again. This operating state is process's memory, 
+                        registers etc. The act of removing a process from execution state is called process switch. In process
+                        switch, the mapping will also be swictched to point to another process memory.
+                    </p>
                     <p> <strong>Context switch</strong> is a smaller version of <strong>process switch</strong>. It happens when 
                         an interrupt or a Syscall is being handled and needs less storing of state. </p>
                 </div>
@@ -180,11 +210,6 @@
         <p>&copy; 2024 Your Name. All rights reserved.</p>
     </footer>
     <script>
-        // Get current date and time
-        var now = new Date();
-        var datetime = now.toLocaleString();
-        document.getElementById("datetime").innerHTML = datetime;
-
         function toggleReadMore(button) {
             var content = button.previousElementSibling;
             if (content.style.display === "none" || content.style.display === "") {
